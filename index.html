@@ -16,103 +16,114 @@
     </header>
 
     <main class="app-container">
-        <!-- 設定セクション -->
-        <section class="settings-section">
-            <div class="settings-group">
-                <h3>基本設定</h3>
-                <div class="setting-item">
-                    <label for="card-name-input">カード名:</label>
-                    <input type="text" id="card-name-input" placeholder="カード名を入力">
-                </div>
-                <div class="setting-item">
-                    <label>カード名サイズ:</label>
-                    <div id="card-name-size-group" class="radio-button-group">
-                        <button data-size="48">S</button>
-                        <button data-size="64" class="active">M</button>
-                        <button data-size="80">L</button>
+        <div class="left-column">
+            <!-- 設定セクション -->
+            <section class="settings-section">
+                <div class="settings-group">
+                    <h3>基本設定</h3>
+                    <div class="setting-item">
+                        <label for="card-name-input">カード名:</label>
+                        <input type="text" id="card-name-input" placeholder="カード名を入力">
                     </div>
-                </div>
-            </div>
-
-            <div class="settings-group">
-                <h3>画像設定</h3>
-                <div class="setting-item">
-                    <label for="image-upload">メイン画像:</label>
-                    <input type="file" id="image-upload" accept="image/*">
-                </div>
-                <div class="setting-item">
-                    <label for="image-zoom">拡縮:</label>
-                    <input type="range" id="image-zoom" min="0.1" max="5" step="0.05" value="1">
-                </div>
-                <div class="setting-item">
-                    <label for="image-pos-x">X座標:</label>
-                    <input type="range" id="image-pos-x" min="-1000" max="1000" step="5" value="0">
-                </div>
-                <div class="setting-item">
-                    <label for="image-pos-y">Y座標:</label>
-                    <input type="range" id="image-pos-y" min="-1000" max="1000" step="5" value="0">
-                </div>
-                <div class="setting-item">
-                    <button id="image-center-button" class="button">画像を中央に配置</button>
-                </div>
-            </div>
-
-            <div class="settings-group">
-                <h3>カードタイプ</h3>
-                <div id="card-type-buttons" class="radio-button-group">
-                    <!-- ボタンはJSで生成 -->
-                </div>
-            </div>
-
-            <div class="settings-group">
-                <h3>ステータス</h3>
-                <div class="status-grid">
-                    <div class="status-item">
-                        <label>ATK</label>
-                        <div class="status-control">
-                            <button id="atk-decrement">-</button>
-                            <span id="atk-value">2</span>
-                            <button id="atk-increment">+</button>
-                        </div>
-                    </div>
-                    <div class="status-item">
-                        <label>HP</label>
-                        <div class="status-control">
-                            <button id="hp-decrement">-</button>
-                            <span id="hp-value">2</span>
-                            <button id="hp-increment">+</button>
-                        </div>
-                    </div>
-                    <div class="status-item">
-                        <label>リーダーHP</label>
-                        <div class="status-control">
-                            <span id="leader-hp-value">20</span>
+                    <div class="setting-item">
+                        <label>カード名サイズ:</label>
+                        <div id="card-name-size-group" class="radio-button-group">
+                            <button data-size="48" class="active">S</button>
+                            <button data-size="64">M</button>
+                            <button data-size="80">L</button>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+
+                <div class="settings-group">
+                    <h3>画像設定</h3>
+                    <div class="setting-item">
+                        <label for="image-upload">メイン画像:</label>
+                        <input type="file" id="image-upload" accept="image/*">
+                    </div>
+                    <div class="setting-item">
+                        <label for="image-zoom">拡縮:</label>
+                        <input type="range" id="image-zoom" min="0.1" max="5" step="0.05" value="1">
+                    </div>
+                    <div class="setting-item">
+                        <label for="image-pos-x">X座標:</label>
+                        <input type="range" id="image-pos-x" min="-1000" max="1000" step="5" value="0">
+                    </div>
+                    <div class="setting-item">
+                        <label for="image-pos-y">Y座標:</label>
+                        <input type="range" id="image-pos-y" min="-1000" max="1000" step="5" value="0">
+                    </div>
+                    <div class="setting-item">
+                        <button id="image-center-button" class="button">画像を中央に配置</button>
+                    </div>
+                </div>
+
+                <div class="settings-group">
+                    <h3>カードタイプ</h3>
+                    <div id="card-type-buttons" class="radio-button-group">
+                        <!-- ボタンはJSで生成 -->
+                    </div>
+                </div>
+
+                <div class="settings-group">
+                    <h3>ステータス</h3>
+                    <div class="status-grid">
+                        <div class="status-item">
+                            <label>ATK</label>
+                            <div class="status-control">
+                                <button id="atk-decrement">-</button>
+                                <span id="atk-value">2</span>
+                                <button id="atk-increment">+</button>
+                            </div>
+                        </div>
+                        <div class="status-item">
+                            <label>HP</label>
+                            <div class="status-control">
+                                <button id="hp-decrement">-</button>
+                                <span id="hp-value">2</span>
+                                <button id="hp-increment">+</button>
+                            </div>
+                        </div>
+                        <div class="status-item">
+                            <label>リーダーHP</label>
+                            <div class="status-control">
+                                <span id="leader-hp-value">20</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="effects-toc-section" class="settings-section">
+                <div id="effects-toc" class="settings-group">
+                    <h3>効果カテゴリ</h3>
+                    <div id="toc-content"></div>
+                </div>
+            </section>
+        </div>
 
         <!-- プレビューセクション -->
         <section class="preview-section">
-            <canvas id="canvas" width="630" height="880"></canvas>
-            <div class="setting-item">
-                <label>プレビューサイズ:</label>
-                <div id="preview-size-group" class="radio-button-group">
-                    <button data-size="50">S</button>
-                    <button data-size="75" class="active">M</button>
-                    <button data-size="100">L</button>
+            <div class="preview-sticky-content">
+                <canvas id="canvas" width="630" height="880"></canvas>
+                <div class="setting-item">
+                    <label>プレビューサイズ:</label>
+                                    <div id="preview-size-group" class="radio-button-group">
+                                        <button data-size="50" class="active">S</button>
+                                        <button data-size="75">M</button>
+                                        <button data-size="100">L</button>
+                                    </div>
+                                </div>
+                                <div class="setting-item">
+                                    <button id="save-button" class="button button-primary button-full-width">カード画像の保存</button>
+                                </div>                <div class="setting-item" id="search-bar-container">
+                    <input type="search" id="effect-search-input" placeholder="効果を検索...">
                 </div>
             </div>
-            <button id="save-button" class="button button-primary">カード画像の保存</button>
         </section>
 
         <!-- 効果セクション -->
         <section class="effects-section">
             <h3>効果リスト</h3>
-            <div class="setting-item">
-                <input type="search" id="effect-search-input" placeholder="効果を検索...">
-            </div>
             <div class="effects-controls">
                 <button id="reset-effects-button" class="button">選択中効果をリセット</button>
                 <button id="expand-collapse-effects-button" class="button">すべて展開</button>

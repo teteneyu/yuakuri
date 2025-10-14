@@ -37,29 +37,72 @@ body {
     flex-wrap: wrap;
     gap: 1.5rem;
     padding: 1.5rem;
-    align-items: flex-start; 
-    justify-content: flex-start; /* Left-align sections */
-}
-
-.settings-section, .preview-section, .effects-section {
+        align-items: stretch; /* Left-align sections */
+    } 
+    
+    .left-column {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        flex: 3;
+        min-width: 350px;
+    }
+    
+    .settings-section, .preview-section, .effects-section {
+        background-color: var(--surface-color);
+        border-radius: 8px;
+        padding: 1.5rem;
+        box-shadow: var(--shadow);
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .preview-section {
+        flex: 4;
+        min-width: 400px;
+        text-align: center;
+        /* position: sticky; is removed here */
+        top: 1.5rem;
+    }
+    
+    .preview-sticky-content {
+        position: sticky;
+        top: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }    
+    .effects-section { flex: 3; min-width: 300px; }
+    
+    #effects-toc-section {
+        position: sticky;
+        top: 1.5rem;
+    }
+#search-bar-container {
+    position: sticky;
+    top: 1.5rem; /* Should match preview-section top */
+    z-index: 10;
     background-color: var(--surface-color);
-    border-radius: 8px;
-    padding: 1.5rem;
-    box-shadow: var(--shadow);
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+    padding-bottom: 1rem; /* Add some space below */
 }
 
-.settings-section { flex: 3; min-width: 350px; }
-.preview-section { 
-    flex: 4; 
-    min-width: 400px; 
-    text-align: center; 
+#effects-toc {
     position: sticky;
     top: 1.5rem;
 }
-.effects-section { flex: 3; min-width: 300px; }
+
+#toc-content a {
+    display: block;
+    padding: 0.25rem 0;
+    color: var(--text-color);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border-color);
+}
+
+#toc-content a:hover {
+    background-color: var(--highlight-color);
+}
 
 .settings-group, .setting-item {
     display: flex;
@@ -106,6 +149,11 @@ input[type="text"], input[type="search"] {
 }
 .button:active, button:active {
     transform: scale(0.98);
+}
+
+.button-full-width {
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .button-primary { background-color: var(--primary-color); }

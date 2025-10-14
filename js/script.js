@@ -55,6 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
         effectSearchInput: document.getElementById('effect-search-input'),
         resetEffectsButton: document.getElementById('reset-effects-button'),
         expandCollapseEffectsButton: document.getElementById('expand-collapse-effects-button'),
+        tocContent: document.getElementById('toc-content'),
     };
 
     const ctx = elements.canvas.getContext('2d');
@@ -92,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const w = state.uploadedImage.width * state.imageScale;
             const h = state.uploadedImage.height * state.imageScale;
             const x = state.imagePosX + (elements.canvas.width / 2) - (w / 2);
-            const y = state.imagePosY + (elements.canvas.height / 2) - (h / 2);
+            const y = state.imagePosY + (elements.canvas.height - bottomBarHeight) / 2 - (h / 2);
             ctx.drawImage(state.uploadedImage, x, y, w, h);
             ctx.restore();
         }
@@ -327,6 +328,16 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             elements.effectsMenu.appendChild(itemsContainer);
         }
+
+        // TOCの生成
+        elements.tocContent.innerHTML = '';
+        for (const category in categories) {
+            const link = document.createElement('a');
+            link.href = '#';
+            link.textContent = category;
+            link.dataset.category = category;
+            elements.tocContent.appendChild(link);
+        }
     };
 
     const setupHoverAccordion = () => {
@@ -387,7 +398,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const img = new Image();
                     img.onload = () => {
                         state.uploadedImage = img;
-                        const scale = Math.max(elements.canvas.width / img.width, elements.canvas.height / img.height);
+                        const scale = Math.max(elements.canvas.width / img.width, (elements.canvas.height - 70) / img.height);
                         state.imageScale = scale;
                         state.imagePosX = 0;
                         state.imagePosY = 0;
@@ -409,7 +420,7 @@ document.addEventListener('DOMContentLoaded', () => {
         elements.imageCenterButton.addEventListener('click', () => {
             if (!state.uploadedImage) return;
             const img = state.uploadedImage;
-            const scale = Math.max(elements.canvas.width / img.width, elements.canvas.height / img.height);
+            const scale = Math.max(elements.canvas.width / img.width, (elements.canvas.height - 70) / img.height);
             state.imageScale = scale;
             state.imagePosX = 0;
             state.imagePosY = 0;
@@ -570,6 +581,18 @@ document.addEventListener('DOMContentLoaded', () => {
             link.href = elements.canvas.toDataURL('image/png');
             link.download = `${state.cardName || 'card'}.png`;
             link.click();
+        });
+
+        elements.tocContent.addEventListener('click', e => {
+            e.preventDefault();
+            if (e.target.tagName !== 'A') return;
+
+            const category = e.target.dataset.category;
+            const header = Array.from(elements.effectsMenu.querySelectorAll('.category-header')).find(h => h.textContent === category);
+
+            if (header) {
+                header.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
         });
     };
 
