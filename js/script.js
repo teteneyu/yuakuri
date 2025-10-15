@@ -579,7 +579,13 @@ document.addEventListener('DOMContentLoaded', () => {
         elements.saveButton.addEventListener('click', () => {
             const link = document.createElement('a');
             link.href = elements.canvas.toDataURL('image/png');
-            link.download = `${state.cardName || 'card'}.png`;
+
+            let filename = state.cardName || 'card';
+            if (state.cardType) {
+                filename = `${state.cardType}_${state.totalCost}_${filename}`;
+            }
+
+            link.download = `${filename}.png`;
             link.click();
         });
 
